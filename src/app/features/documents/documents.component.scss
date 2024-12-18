@@ -1,0 +1,159 @@
+/* Container for the whole User Management section */
+mat-card {
+    width: 100%;
+    margin: 20px;
+    // background: linear-gradient(135deg, #d9e3d0, #f2f4f1); /* Light beige to muted green gradient */
+    background: #f0eef5;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+    border-radius: 16px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .document-container {
+      margin: 30px auto;
+      font-family: 'Arial', sans-serif;
+      max-width: 1200px;
+      padding: 20px;
+    }
+    
+    /* Header section with page title */
+    .header-section h1 {
+      font-size: 28px;
+      color: #333;
+      margin-bottom: 20px;
+      text-align: left;
+      font-weight: 600;
+    }
+    
+    /* Add User Button (Admin-only) */
+    .add-user-btn {
+      margin-bottom: 15px;
+      text-align: right;
+    }
+    
+    .btn-add {
+      background-color: #007bff;
+      color: white;
+      padding: 10px 20px;
+      border-radius: 5px;
+      border: none;
+      cursor: pointer;
+      font-size: 16px;
+      transition: all 0.3s ease;
+    }
+    
+    .btn-add:hover {
+      background-color: #0056b3;
+    }
+    
+    /* User List Table Container */
+    .user-list-table-container {
+      overflow-x: auto;
+      margin-top: 20px;
+    }
+    
+    .user-list-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 14px;
+      color: #555;
+      border-radius: 8px;
+    }
+    
+    .user-list-table th, .user-list-table td {
+      padding: 12px 15px;
+      text-align: left;
+    }
+    
+    .user-list-table th {
+      background-color: #f4f4f4;
+      font-weight: 600;
+    }
+    
+    .user-list-table tr:nth-child(even) {
+      background-color: #f9f9f9;
+    }
+    
+    .user-list-table tr:hover {
+      background-color: #f1f1f1;
+    }
+    
+    .user-list-table td {
+      border-bottom: 1px solid #ddd;
+    }
+    
+    /* Action dropdown button */
+    .action-dropdown {
+      background: none;
+      border: none;
+      cursor: pointer;
+      position: relative;
+      font-size: 20px;
+      color: #007bff;
+      z-index: 4;
+    }
+    
+    .dots {
+      display: inline-block;
+    }
+    
+    .dropdown-menu {
+      display: none;
+      position: absolute;
+      background-color: #fff;
+      border: 1px solid #ccc;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      border-radius: 8px;
+      padding: 10px;
+      width: 120px;
+      right: 0;
+    }
+    
+    .action-dropdown:hover .dropdown-menu {
+      display: block;
+    }
+    
+    .dropdown-menu button {
+      width: 100%;
+      padding: 8px;
+      background-color: transparent;
+      border: none;
+      text-align: left;
+      font-size: 14px;
+      cursor: pointer;
+    }
+    
+    .dropdown-menu button:hover {
+      background-color: #f1f1f1;
+    }
+    
+    /* Make the layout responsive */
+    @media (max-width: 768px) {
+      .user-management-container {
+        padding: 15px;
+      }
+    
+      .user-list-table {
+        font-size: 12px;
+      }
+    
+      .btn-add {
+        width: 100%;
+        font-size: 14px;
+      }
+    }
+
+.fade {
+  background: rgba(0, 0, 0, 0.062);
+}
+    
+.modal-body {
+  padding: 0;
+} 
+
+.mat-form-field {
+  width: 100%;
+  margin-bottom: 0px;
+  padding-bottom: 0;
+  display: block !important;
+}

@@ -1,0 +1,30 @@
+.dashboard-card {
+    margin: 20px;
+}
+
+.graph-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px; 
+    padding: 40px 10px;
+    background: transparent;
+}
+
+.graph-card {
+    height: 300px;
+}
+
+mat-card-header {
+    background-color: #f5f5f5;
+    border-bottom: 1px solid #ccc; 
+}
+
+mat-card-title {
+    font-weight: bold;
+    color: #333; 
+}
+
+canvas {
+    width: 100% !important;
+    height: 100% !important;
+}

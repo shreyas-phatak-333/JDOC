@@ -1,0 +1,35 @@
+<mat-card class="sign-up-card">
+    <mat-card-header>
+      <mat-card-title>Login</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <form [formGroup]="loginForm" (ngSubmit)="onLogin()">
+        <mat-form-field appearance="fill" class="form-field">
+          <mat-label>Email</mat-label>
+          <input type="email" matInput formControlName="email" />
+          <mat-error *ngIf="loginForm.controls['email'].hasError('required')">
+            Email is required.
+          </mat-error>
+          <mat-error *ngIf="loginForm.controls['email'].hasError('email') && !loginForm.controls['email'].hasError('required')">
+            Please enter a valid email address
+          </mat-error>
+        </mat-form-field>
+  
+        <mat-form-field appearance="fill" class="form-field">
+          <mat-label>Password</mat-label>
+          <input matInput type="password" formControlName="password" [type]="hide ? 'password' : 'text'" />
+          <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+          <mat-error *ngIf="loginForm.controls['password'].invalid || (loginForm.controls['password'].dirty || loginForm.controls['password'].touched)">
+            Password is required and must be at least 6 characters.
+          </mat-error>
+        </mat-form-field>
+  
+        <button mat-raised-button type="submit" color="primary" class="submit-button" >Login</button>
+      </form>
+      <div class="signup-link">
+        <span>Don't have an account? </span>
+        <a mat-link routerLink="/signup" class="signup-text">Sign Up</a>
+      </div>
+    </mat-card-content>
+  </mat-card>
+  

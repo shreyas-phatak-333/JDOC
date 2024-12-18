@@ -1,0 +1,76 @@
+<mat-card>
+    <mat-card-content>
+      <div class="document-container">
+        <div class="header-section">
+          <h1>Documents</h1>
+        </div>
+  
+        <div class="add-user-btn" *ngIf="hasRole('admin') || hasRole('superUser')">
+          <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#documentModal">Add Document</button>
+        </div>
+  
+        <table class="user-list-table">
+          <thead>
+            <tr>
+              <th>Sr No</th>
+              <th>fileName</th>
+              <th>description</th>
+              <th>addedBy</th>
+              <th *ngIf="hasRole('admin') || hasRole('superUser')">Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let document of documents">
+              <td>{{ document.srNo }}</td>
+              <td>{{ document.fileName }}</td>
+              <td>{{ document.description }}</td>
+              <td>{{ document.addedBy }}</td>
+              <td>
+                <button class="action-dropdown" *ngIf="hasRole('admin') || hasRole('superUser')">
+                  <span class="dots">...</span>
+                  <div class="dropdown-menu">
+                    <button (click)="downloadDocument(document.filePath)">Download</button>
+                    <button (click)="deleteDocument(document.id)">Delete</button>
+                  </div>
+                </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      
+    </mat-card-content>
+  </mat-card>
+  
+
+  <div class="modal fade" id="documentModal" tabindex="-1" aria-labelledby="documentModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="documentModalLabel">Add Document</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form [formGroup]="documentForm" (ngSubmit)="onSave()">
+            <mat-form-field class="full-width" appearance="fill">
+              <mat-label>Description</mat-label>
+              <input matInput formControlName="description"  name="description" />
+            </mat-form-field>
+
+            <mat-form-field class="full-width" appearance="fill">
+              <mat-label>Upload File</mat-label>
+              <button mat-icon-button matPrefix (click)="f_input.click()">
+                <mat-icon>attach_file</mat-icon>
+              </button>
+              <input type="text"  appearance="fill" matInput formControlName="fileName" />
+              <input type="file" hidden #f_input (change)="onFileSelected($event)" />
+            </mat-form-field>
+
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary" (click)="onSave()">Save changes</button>
+        </div>
+      </div>
+    </div>
+  </div>

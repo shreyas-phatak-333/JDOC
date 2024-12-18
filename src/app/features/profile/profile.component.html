@@ -1,0 +1,25 @@
+<mat-card class="profile-card">
+    <mat-card-header class="profile-header">
+        <div mat-card-avatar class="profile-avatar"></div>
+        <mat-card-title>{{ user?.username }}</mat-card-title>
+        <mat-card-subtitle>Role: {{ user?.role }} <br>Member Since: 14 December 2024</mat-card-subtitle>
+    </mat-card-header>
+    
+    <mat-card-content>
+        <div class="profile-info">
+            
+            <h4>Bio</h4>
+            <p>Software Developer</p>
+    
+            <h4>Contact</h4>
+            <p><strong>Email:</strong> {{ user?.email }}</p>
+            <p><strong>Created by:</strong> admin</p>
+        
+        </div>
+    </mat-card-content>
+    
+    <mat-card-actions>
+        <button mat-raised-button (click)="logOut()">Logout</button>
+    </mat-card-actions>
+</mat-card>
+    

@@ -1,0 +1,105 @@
+<mat-card>
+    <mat-card-content>
+      <div class="user-management-container">
+        <div class="header-section">
+          <h1>User Management</h1>
+        </div>
+  
+        <div class="add-user-btn">
+          <button class="btn-add" *ngIf="showActionButtons" data-bs-toggle="modal" data-bs-target="#userModal">Add User</button>
+        </div>
+  
+        <table class="user-list-table">
+          <thead>
+            <tr>
+              <th>ID/No</th>
+              <th>Username</th>
+              <th>Email</th>
+              <th>Role</th>
+              <th *ngIf="showActionButtons">Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let user of users">
+              <td>{{ user.id }}</td>
+              <td>{{ user.username }}</td>
+              <td>{{ user.email }}</td>
+              <td>{{ user.role }}</td>
+              <td>
+                <button class="action-dropdown" *ngIf="showActionButtons">
+                  <span class="dots">...</span>
+                  <div class="dropdown-menu">
+                    <button data-bs-toggle="modal" data-bs-target="#editModal" (click)="openEditUserModal(user.id)">Edit</button>
+                    <button (click)="deleteUser(user.id)">Delete</button>
+                  </div>
+                </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </mat-card-content>
+  </mat-card>
+  
+<div class="modal fade" id="userModal" tabindex="-1">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <app-add-user [title]="modalTitle" (save)="onSave($event)"></app-add-user>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="editModal" tabindex="-1">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <mat-card class="sign-up-card">
+          <mat-card-header>
+            <mat-card-title>Edit User</mat-card-title>
+          </mat-card-header> 
+          <mat-card-content>
+            <form [formGroup]="userForm" (ngSubmit)="editUser()">
+              <mat-form-field appearance="fill" class="form-field">
+                  <mat-label>Email</mat-label>
+                  <input type="email" matInput formControlName="email" />
+                  <mat-error *ngIf="userForm.controls['email'].hasError('required')">
+                    Email is required.
+                  </mat-error>
+                  <mat-error *ngIf="userForm.controls['email'].hasError('email') && !userForm.controls['email'].hasError('required')">
+                    Please enter a valid email address
+                  </mat-error>
+              </mat-form-field>
+      
+              <mat-form-field appearance="fill" class="form-field">
+                <mat-label>Username</mat-label>
+                <input matInput formControlName="username" />
+                <mat-error *ngIf="userForm.controls['username'].invalid && (userForm.controls['username'].dirty || userForm.controls['username'].touched)">
+                  Username is required.
+                </mat-error>
+              </mat-form-field>
+
+              <mat-form-field  appearance="fill" class="form-field">
+                <mat-label>Role</mat-label>
+                <mat-select formControlName="role">
+                  <mat-option value="user">User</mat-option>
+                  <mat-option value="superUser">Super User</mat-option>
+                  <mat-option value="admin">Admin</mat-option>
+                </mat-select>
+              </mat-form-field>
+
+              <button mat-raised-button type="submit" color="primary" class="submit-button" [disabled]="userForm.invalid">Save Changes</button>
+            </form>
+          </mat-card-content>
+        </mat-card>      
+      </div>
+    </div>
+  </div>
+</div>

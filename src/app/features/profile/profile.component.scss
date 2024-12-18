@@ -1,0 +1,69 @@
+.profile-card {
+    width: 100%;
+    max-width: 450px;
+    margin: 20px;
+    // background: linear-gradient(135deg, #f2f4f1, #d9e3d0); /* Light beige to muted green gradient */
+    background: #f0eef5;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+    border-radius: 16px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  } 
+  
+  .profile-header {
+    background-color: rgba(0, 0, 0, 0.05); /* Light grey overlay */
+    border-radius: 16px 16px 0 0;
+    padding: 16px;
+  }
+  
+  .profile-avatar {
+    background-image: url('https://avatars.dicebear.com/api/human/:seed.svg');
+    background-size: cover;
+    border-radius: 50%;
+    width: 80px;
+    height: 80px;
+    border: 3px solid #f2f4f1; /* Soft white border */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .profile-info h4 {
+    color: #4c5c68; /* Muted blue-grey for headers */
+    margin-top: 20px;
+    margin-bottom: 4px;
+  }
+  
+  .profile-info p {
+    color: rgba(0, 0, 0, 0.7); /* Neutral grey text */
+    font-size: 0.9rem;
+    line-height: 1.6;
+  }
+  
+  mat-card-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #4c5c68; /* Muted blue-grey for title */
+  }
+  
+  mat-card-subtitle {
+    font-size: 1rem;
+    margin-top: 4px;
+    color: rgba(0, 0, 0, 0.7); /* Subtle grey for subtitle */
+  }
+  
+  mat-card-actions {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+  }
+  
+  button {
+    width: 120px;
+    font-size: 0.9rem;
+    background-color: #f26055; /* Soft coral color for secondary button */
+    color: white;
+  }
+  
+  button:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  }
+  

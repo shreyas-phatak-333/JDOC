@@ -1,4 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { Subscription } from 'rxjs';
+import { AuthService } from 'src/app/service';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +10,27 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'jkdoc';
+  isAuthenticated!: boolean;
+  private authStatusSubscription!: Subscription;
+  
+  constructor(
+    private authService: AuthService,
+  ) {}
+
+  ngOnInit() {
+   this.updateAuthStatus();
+  }
+
+  private updateAuthStatus() {
+    this.authService.Authenticated$.subscribe(status => {
+      this.isAuthenticated = status;
+    })
+  }
+
+  ngOnDestroy() {
+    if (this.authStatusSubscription) {
+      this.authStatusSubscription.unsubscribe();
+    }
+  }
+
 }

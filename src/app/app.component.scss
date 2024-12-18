@@ -1,0 +1,51 @@
+.example-container {
+    height: 100vh;
+    display: flex;
+    flex-direction: row;
+  }
+  
+  .sidenav {
+    height: 100%;
+    width: 250px;
+    // background-color: #3f51b5;
+    color: white;
+  }
+  
+  .mat-nav-list .active {
+    background-color: #e8eaf6;
+    color: #3f51b5;
+    border-radius: 10px;
+  }
+  
+  .mat-sidenav-content {
+    background-color: #f5f5f5;
+    padding: 20px;
+    width: 100%;
+  }
+
+  
+  .mat-nav-list mat-list-item {
+    padding: 15px;
+    font-size: 16px;
+    font-weight: 500;
+  }
+  
+  .mat-nav-list mat-list-item:hover {
+    background-color: #c5cae9;
+    cursor: pointer;
+  }
+  
+  @media screen and (max-width: 768px) {
+    .sidenav {
+      width: 200px;
+    }
+  
+    .example-container {
+      flex-direction: column;
+    }
+  
+    .mat-sidenav-content {
+      padding: 10px;
+    }
+  }
+  
